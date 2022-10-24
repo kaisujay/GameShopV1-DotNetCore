@@ -1,0 +1,34 @@
+﻿@model GameShopV1.Models.Cart
+@{
+    ViewData["Title"] = "Cart Items";
+}
+
+<div>In <b>@Model.Player.Name</b>'s cart </div>
+
+@{
+    string gameList="";
+    int playerId;
+}
+
+<div class="container col-4">
+    @foreach (var item in Model.Games)
+    {
+        <div class="col">
+            <div class="card">
+                <img src="~/images/GameImage.jpg" class="card-img-top" alt="Game Image ..">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <p class="card-text">@item.Price</p>
+                    @{
+                        gameList += "," + item.Id;
+                    }
+                </div>
+            </div>
+        </div>
+    }
+    @{
+        playerId = Model.Player.Id;
+    }
+    <a asp-controller="Cart" asp-action="DoOrder"
+       asp-route-games="@gameList" asp-route-player="@playerId" class="btn btn-primary">Order</a>
+</div>

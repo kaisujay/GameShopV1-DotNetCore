@@ -26,7 +26,7 @@ namespace GameShopV1.Controllers
 
             if (playerExists != null)
             {
-                return RedirectToAction("Index", "Store",playerExists.Id);
+                return RedirectToAction("Index", "Store",playerExists);
             }
             else
             {
