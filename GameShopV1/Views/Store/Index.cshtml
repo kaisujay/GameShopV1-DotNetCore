@@ -1,0 +1,21 @@
+﻿@model IEnumerable<GameShopV1.Models.Game>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card">
+                    <img src="~/images/GameImage.jpg" class="card-img-top" alt="Game Image ..">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-text">@item.Price</p>
+                        <a href="#" class="btn btn-primary">Add</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
