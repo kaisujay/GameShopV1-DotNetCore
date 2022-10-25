@@ -1,0 +1,25 @@
+﻿@model IEnumerable<GameShopV1.Models.DisplayOrder>
+
+@{
+    ViewData["Title"] = "Order Lists";
+} 
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Order #</th>
+            <th scope="col">Game Name</th>
+            <th scope="col">Purchase Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.OrderId</td>
+                <td>@item.GameName</td>
+                <td>@item.PurchaseDate</td>
+            </tr>
+        }
+    </tbody>
+</table>

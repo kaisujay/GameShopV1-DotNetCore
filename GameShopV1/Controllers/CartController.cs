@@ -50,8 +50,7 @@ namespace GameShopV1.Controllers
 
         public IActionResult DoOrder(string games, int player)
         {
-            var gameList = games.Split(',').Skip(1);
-            
+            var gameList = games.Split(',').Skip(1);            
 
             foreach (var item in gameList)
             {

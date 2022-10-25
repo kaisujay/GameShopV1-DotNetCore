@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/GameShopV1.styles.css" asp-append-version="true" />
 </head>
+
+@{
+    var playerEmail = Context.Request.Query["Email"].ToString();
+}
+
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -26,13 +31,26 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Store" asp-action="Index">Store</a>
                         </li>
                         <li>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index"
+                               asp-route-PlayerEmail="@playerEmail">Orders</a>
+                        </li>
+                        <li>
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">Cart</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="LogIn" asp-action="Index">LogIn</a>
-                        </li>
+                        @if (playerEmail.Contains("@"))
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="LogIn" asp-action="Index">@playerEmail</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="LogIn" asp-action="Index">LogIn</a>
+                            </li>
+                        }                        
                         <li>
                             <a class="nav-link text-dark" asp-area="" asp-controller="Register" asp-action="Index">Register</a>
                         </li>
